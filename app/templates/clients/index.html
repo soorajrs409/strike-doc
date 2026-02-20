@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Clients</h2>
+
+<form 
+    hx-post="/clients"
+    hx-target="#client-list"
+    hx-swap="beforeend"
+>
+    <input type="text" name="name" placeholder="Client name" required>
+    <input type="email" name="contact_email" placeholder="Email">
+    <button type="submit">Add Client</button>
+</form>
+
+<hr>
+
+<div id="client-list">
+    {% for client in clients %}
+        {% include "clients/_client_row.html" %}
+    {% endfor %}
+</div>
+
+{% endblock %}
